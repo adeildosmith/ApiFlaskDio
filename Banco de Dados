@@ -1,0 +1,37 @@
+import pandas as pd
+from flask_ngrok import run_with_ngrok
+from flask import request, jsonify, Flask
+import random as rk
+
+d = {
+    "nome": "Nikola",
+    "sobrenome": "Tesla",
+    "idade": 60
+    "telefone":  11943752399
+    "endereço": "rua: Jovercina, 245"
+    "cidade": "Diadema"
+    "Estado": "São Paulo"
+}
+
+@app.route("/") #code to assing HomePage URL in our app to function home.
+
+def home():
+  """
+  The entire line below must be written in a single line.
+  """
+  return "<marquee><h3> TO CHECK IN PUT ADD '/input' TO THE URL AND TO CHECK OUT PUT ADD '/output' TO THE URL.</h3>"
+
+@app.route("/input") #code to assing Input URL in our app to function input.
+
+def input():
+  return jsonify(d) # "d" is the dictionary we defined
+
+@app.route('/output', methods=['GET', 'POST']) #output page
+
+def predJson():
+  pred = r.choice(["positive", "negative"])
+  nd = d   # our input
+  nd["prediction"]=pred
+  return jsonify(nd)
+
+  app.run()
